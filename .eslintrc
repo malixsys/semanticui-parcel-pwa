@@ -1,0 +1,55 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "env": {
+    "serviceworker": true,
+    "browser": true,
+    "jest": true,
+    "node": true
+  },
+  "rules": {
+    "comma-dangle": 0,
+    "indent": [2, 2, { "SwitchCase": 1 }],
+    "max-len": [2, 120, 2, {
+      "ignoreUrls": true,
+      "ignoreComments": false
+    }],
+    "class-methods-use-this": [0, {
+      "exceptMethods": [
+        "render",
+        "getInitialState",
+        "getDefaultProps",
+        "getChildContext",
+        "componentWillMount",
+        "componentDidMount",
+        "componentWillReceiveProps",
+        "shouldComponentUpdate",
+        "componentWillUpdate",
+        "componentDidUpdate",
+        "componentWillUnmount"
+      ]
+    }],
+
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-indent": [2, 2],
+    "react/jsx-indent-props": [2, 2],
+    "react/prop-types": [2, { "ignore": ["children"] }],
+    "react/no-unused-prop-types": 0,
+    "react/forbid-prop-types": 0,
+
+    "import/no-extraneous-dependencies": [2, { "devDependencies": true }],
+    "import/no-named-as-default": 0,
+
+    "jsx-a11y/anchor-has-content": 0,
+    "jsx-a11y/no-static-element-interactions": 0
+  },
+  "globals": {
+    "VERSION": true,
+    "workbox": true
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "name": "semanticui-parcel-pwa",
+  "license": "MIT",
+  "author": "malixsys",
+  "description": "A small SemanticUI pwa with Parcel Bundler",
+  "scripts": {
+    "clean": "rimraf dist/*",
+    "start": "NODE_ENV=production http-server dist -d false -p ${PORT:-5000}",
+    "genSW": "NODE_ENV=production workbox generateSW workbox-config.js",
+    "injMF": "NODE_ENV=production workbox injectManifest",
+    "dev": "NODE_ENV=development parcel ./src/index.dev.html --no-cache -p ${PORT:-3000}",
+    "rebuild": "npm run clean && npm run package && npm run injMF",
+    "deploy": "now --public",
+    "package": "NODE_ENV=production parcel build ./src/index.html --public-url /"
+  },
+  "now": {
+    "alias": "semanticui-parcel-pwa.now.sh",
+    "engines": {
+      "node": "8.x"
+    },
+    "files": [
+      "dist"
+    ],
+    "env": {
+      "NODE_ENV": "production"
+    }
+  },
+  "optionalDependencies": {},
+  "dependencies": {
+    "http-server": "^0.10.0"
+  },
+  "postcss": {
+    "modules": false,
+    "plugins": {
+      "autoprefixer": {
+        "browsers": [
+          ">1%",
+          "last 4 versions",
+          "Firefox ESR",
+          "not ie < 9"
+        ],
+        "flexbox": "no-2009"
+      }
+    }
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.2.4",
+    "babel-eslint": "^8.1.2",
+    "babel-preset-react-app": "^3.1.0",
+    "eslint": "^4.14.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "parcel-bundler": "^1.4.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "rimraf": "^2.6.2",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.77.1",
+    "workbox-cli": "^3.0.0-alpha.3"
+  }
+}
